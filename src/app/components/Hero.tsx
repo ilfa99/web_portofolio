@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { ArrowRight, ChevronDown, Database, Network, Cpu, Github, Linkedin, Instagram, Mail } from "lucide-react";
-import heroPhoto from "../../assets/ilfasatu.jpg";
+import heroPhoto from "../../assets/ilfasatu-copy.jpg";
 
 const GridDots = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5 dark:opacity-10 transition-opacity duration-500">
