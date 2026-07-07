@@ -80,7 +80,7 @@ export function About() {
 
               <p>
                 I also have a great interest in{" "}
-                <span className="text- font-medium">
+                <span className="text-muted-foreground font-medium">
                   business analysis
                 </span>
                 , understanding that the best technological solutions are born
