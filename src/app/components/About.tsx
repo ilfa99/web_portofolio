@@ -79,13 +79,9 @@ export function About() {
               </p>
 
               <p>
-                I also have a great interest in{" "}
-                <span className="text-muted-foreground font-medium">
-                  business analysis
-                </span>
-                , understanding that the best technological solutions are born
-                from a deep understanding of business needs and organizational
-                processes.
+                I also have a great interest in business analysis, understanding that the
+                best technological solutions are born from a deep understanding of business
+                needs and organizational processes.
               </p>
 
               <p>
