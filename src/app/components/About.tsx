@@ -70,7 +70,7 @@ export function About() {
 
               <p>
                 My interest in{" "}
-                <span className="text-accent font-medium">
+                <span className="text-foreground font-medium">
                   problem solving
                 </span>{" "}
                 led me to explore various fields from software development
