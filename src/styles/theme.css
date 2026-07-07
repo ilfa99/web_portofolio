@@ -166,7 +166,8 @@
     line-height: 1.5;
   }
 
-  input, textarea {
+  input,
+  textarea {
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;

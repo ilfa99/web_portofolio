@@ -5,8 +5,16 @@ import { CORE_SKILLS, SkillIcons } from "../data";
 
 export function Skills() {
   return (
-    <section id="skills" className="py-28 bg-secondary transition-colors duration-500">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      id="skills"
+      className="relative py-20 bg-white dark:bg-[#0F172A] transition-colors duration-700 overflow-hidden"
+    >
+      {/* Soft transition from About */}
+      <div
+        className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#FCF8F0] via-[#FBF8F2] to-white dark:from-[#111827] dark:via-[#162033] dark:to-[#0F172A] transition-all duration-700"
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader
           title="Core Skills"
           subtitle="Technologies and tools I use to build digital solutions and secure systems."
@@ -34,7 +42,7 @@ export function Skills() {
               >
                 {/* Circular icon container */}
                 <div
-                  className="bg-card border border-border group-hover:-translate-y-1"
+                  className="group-hover:-translate-y-1 transition-colors duration-500"
                   style={{
                     width: "90px",
                     height: "90px",
@@ -44,25 +52,58 @@ export function Skills() {
                     justifyContent: "center",
                     transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
                     cursor: "pointer",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+
+                    background:
+                      "var(--skill-card-bg, #FCF8F0)",
+
+                    border:
+                      "1px solid var(--skill-card-border, #E8DCC7)",
+
+                    boxShadow:
+                      "0 6px 18px rgba(183,163,126,0.10)",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
+
                     el.style.transform = "scale(1.08) translateY(-4px)";
-                    el.style.boxShadow = "0 8px 25px rgba(212, 175, 55, 0.25), 0 0 0 2px rgba(212, 175, 55, 0.15)";
+                    el.style.background = "#FFFDF9";
                     el.style.borderColor = "var(--accent)";
+                    el.style.boxShadow =
+                      "0 14px 35px rgba(190,160,100,0.20), 0 0 0 2px rgba(212,175,55,0.15)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget;
+
                     el.style.transform = "scale(1) translateY(0)";
-                    el.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
-                    el.style.borderColor = "";
+
+                    if (document.documentElement.classList.contains("dark")) {
+                      el.style.background = "#1E293B";
+                      el.style.borderColor = "#334155";
+                      el.style.boxShadow =
+                        "0 8px 24px rgba(0,0,0,0.30)";
+                    } else {
+                      el.style.background = "#FCF8F0";
+                      el.style.borderColor = "#E8DCC7";
+                      el.style.boxShadow =
+                        "0 6px 18px rgba(183,163,126,0.10)";
+                    }
                   }}
                   tabIndex={0}
                   aria-label={skill}
+                  ref={(el) => {
+                    if (!el) return;
+
+                    if (document.documentElement.classList.contains("dark")) {
+                      el.style.background = "#1E293B";
+                      el.style.borderColor = "#334155";
+                      el.style.boxShadow =
+                        "0 8px 24px rgba(0,0,0,0.30)";
+                    }
+                  }}
                 >
                   {SkillIcons[skill]}
                 </div>
+
                 {/* Skill name */}
                 <span
                   className="text-foreground transition-colors duration-300 group-hover:text-accent"

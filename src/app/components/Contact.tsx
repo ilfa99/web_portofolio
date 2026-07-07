@@ -1,108 +1,280 @@
 import React, { useState } from "react";
-import { Mail, Github, Linkedin, Instagram, ArrowUpRight, Send } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  ArrowUpRight,
+  Send,
+} from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { FadeUp } from "./FadeUp";
 
 export function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
   const [sent, setSent] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      alert("Please complete the CAPTCHA first.");
+      return;
+    }
+
+    // Nanti di sini bisa diganti EmailJS / Formspree
+
     setSent(true);
-    setTimeout(() => setSent(false), 3500);
-    setFormData({ name: "", email: "", message: "" });
+
+    setTimeout(() => {
+      setSent(false);
+    }, 3500);
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+
+    setCaptchaToken("null");
   };
 
   return (
-    <section id="contact" className="py-28 bg-secondary transition-colors duration-500">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      id="contact"
+      className="relative py-15 bg-[#FCF8F0] dark:bg-[#111827] transition-colors duration-700 overflow-hidden"
+    >
+      {/* Soft transition from Certifications */}
+      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white via-[#FBF8F2] to-[#FCF8F0] dark:from-[#0F172A] dark:via-[#162033] dark:to-[#111827] transition-all duration-700" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader
-          label="06 / Contact"
           title="Let's Connect"
           subtitle="Have an interesting project or want to chat? I'm always open to new conversations."
         />
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Left — contact info */}
+          {/* LEFT */}
           <FadeUp>
             <div className="space-y-5">
               {[
-                { icon: Mail, label: "Email", value: "ilfa.fatimah@email.com", href: "mailto:ilfa.fatimah@email.com" },
-                { icon: Github, label: "GitHub", value: "github.com/ilfafatimah", href: "#" },
-                { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ilfafatimah", href: "#" },
-                { icon: Instagram, label: "Instagram", value: "@ilfafatimah_", href: "#" },
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "ilfanurfatimah.work@gmail.com",
+                  href: "mailto:ilfanurfatimah.work@gmail.com",
+                },
+                {
+                  icon: Github,
+                  label: "GitHub",
+                  value: "github.com/ilfa99",
+                  href: "https://github.com/ilfa99",
+                },
+                {
+                  icon: Linkedin,
+                  label: "LinkedIn",
+                  value: "linkedin.com/in/ilfafatimah",
+                  href: "https://linkedin.com/in/ilfafatimah",
+                },
               ].map(({ icon: Icon, label, value, href }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-card border border-border rounded-xl hover:border-accent/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-accent"
-                  aria-label={`Open ${label}`}
+                  className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-accent"
+                  style={{
+                    background: document.documentElement.classList.contains("dark")
+                      ? "#1E293B"
+                      : "#FFFFFF",
+
+                    border: document.documentElement.classList.contains("dark")
+                      ? "1px solid #334155"
+                      : "1px solid #E8DCC7",
+
+                    boxShadow: document.documentElement.classList.contains("dark")
+                      ? "0 10px 30px rgba(0,0,0,.35)"
+                      : "0 8px 24px rgba(183,163,126,.08)"
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget;
+
+                    el.style.transform = "translateY(-4px)";
+                    el.style.borderColor = "var(--accent)";
+                    el.style.boxShadow =
+                      "0 18px 40px rgba(190,160,100,0.18)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget;
+
+                    el.style.transform = "translateY(0)";
+                    el.style.borderColor = "#E8DCC7";
+                    el.style.boxShadow =
+                      "0 8px 24px rgba(183,163,126,0.08)";
+                  }}
                 >
                   <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors duration-200">
                     <Icon size={18} className="text-accent" />
                   </div>
+
                   <div>
-                    <p className="text-xs text-muted-foreground mb-0.5">{label}</p>
-                    <p className="text-sm font-medium text-foreground">{value}</p>
+                    <p className="text-xs text-muted-foreground mb-0.5">
+                      {label}
+                    </p>
+
+                    <p className="text-sm font-medium text-foreground">
+                      {value}
+                    </p>
                   </div>
-                  <ArrowUpRight size={14} className="ml-auto text-muted-foreground group-hover:text-accent group-hover:scale-125 transition-all duration-300" />
+
+                  <ArrowUpRight
+                    size={14}
+                    className="ml-auto text-muted-foreground group-hover:text-accent group-hover:scale-125 transition-all duration-300"
+                  />
                 </a>
               ))}
             </div>
           </FadeUp>
 
-          {/* Right — form */}
+          {/* RIGHT */}
           <FadeUp delay={0.1}>
-            <form onSubmit={handleSend} className="bg-card border border-border rounded-2xl p-7 space-y-4 shadow-sm">
-              <h3 className="font-semibold text-foreground mb-5" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem" }}>
+            <form
+              onSubmit={handleSend}
+              className="
+            rounded-2xl
+            p-7
+            space-y-4
+            bg-white
+            dark:bg-slate-800
+            border
+            border-[#E8DCC7]
+            dark:border-slate-700
+            shadow-lg
+            transition-all
+            duration-500
+            "
+            >
+              <h3
+                className="font-semibold text-foreground mb-5"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "1.2rem",
+                }}
+              >
                 Send a Message
               </h3>
 
               {[
-                { key: "name", label: "Name", type: "text", placeholder: "Your full name" },
-                { key: "email", label: "Email", type: "email", placeholder: "email@example.com" },
+                {
+                  key: "name",
+                  label: "Name",
+                  type: "text",
+                  placeholder: "Your full name",
+                },
+                {
+                  key: "email",
+                  label: "Email",
+                  type: "email",
+                  placeholder: "email@example.com",
+                },
               ].map(({ key, label, type, placeholder }) => (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-foreground mb-1.5" htmlFor={key}>{label}</label>
+                  <label
+                    className="block text-sm font-medium text-foreground mb-1.5"
+                    htmlFor={key}
+                  >
+                    {label}
+                  </label>
+
                   <input
                     id={key}
                     type={type}
                     placeholder={placeholder}
                     value={formData[key as keyof typeof formData]}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, [key]: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        [key]: e.target.value,
+                      }))
+                    }
                     required
-                    className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                    style={{
+                      background: document.documentElement.classList.contains("dark")
+                        ? "#0F172A"
+                        : "#FFFDF9",
+
+                      border: document.documentElement.classList.contains("dark")
+                        ? "1px solid #334155"
+                        : "1px solid #E8DCC7",
+
+                      color: document.documentElement.classList.contains("dark")
+                        ? "#F8FAFC"
+                        : "#111827",
+                    }}
                   />
                 </div>
               ))}
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1.5" htmlFor="message">Message</label>
+                <label
+                  className="block text-sm font-medium text-foreground mb-1.5"
+                  htmlFor="message"
+                >
+                  Message
+                </label>
+
                 <textarea
                   id="message"
                   placeholder="Write your message here..."
-                  rows={4}
+                  rows={5}
                   value={formData.message}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      message: e.target.value,
+                    }))
+                  }
                   required
-                  className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-200 resize-none"
+                  style={{
+                    background: document.documentElement.classList.contains("dark")
+                      ? "#0F172A"
+                      : "#FFFDF9",
+
+                    border: document.documentElement.classList.contains("dark")
+                      ? "1px solid #334155"
+                      : "1px solid #E8DCC7",
+                  }}
+                />
+              </div>
+
+              {/* CAPTCHA */}
+              <div className="flex justify-center py-2">
+                <ReCAPTCHA
+                  sitekey="6LdKFUgtAAAAAC6etCsISETZva54IDaLUpmDlFDJ"
+                  onChange={(token: string | null) => setCaptchaToken(token ?? "")}
                 />
               </div>
 
               <button
                 type="submit"
-                disabled={sent}
-                className="w-full flex items-center justify-center gap-2 py-3 h-12 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background disabled:opacity-70 disabled:hover:scale-100"
+                disabled={sent || !captchaToken}
+                className="w-full flex items-center justify-center gap-2 py-3 h-12 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {sent ? (
-                  "Message Sent ✓"
+                  <>
+                    Message Sent ✓
+                  </>
                 ) : (
                   <>
                     Send Message
-                    <Send size={14} className="ml-1" />
+                    <Send size={14} />
                   </>
                 )}
               </button>

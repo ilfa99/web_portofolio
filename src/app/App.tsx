@@ -26,7 +26,7 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.3, rootMargin: "-10% 0px -40% 0px" }
+      { threshold: 0.65, rootMargin: "-10% 0px -40% 0px" }
     );
 
     const heroEl = document.getElementById("hero");

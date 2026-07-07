@@ -22,7 +22,10 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-white dark:bg-[#0F172A] transition-colors duration-500"
+    >
       <GridDots />
 
       {/* Decorative tech elements */}
@@ -115,23 +118,23 @@ export function Hero() {
 
             {/* Social quick links */}
             <div className="flex items-center gap-4 mt-10 pt-8 border-t border-border">
-              {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Mail, href: "mailto:ilfa.fatimah@email.com", label: "Email" },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent"
-                >
-                  <Icon size={15} />
-                </a>
-              ))}
+              {
+                [
+                  { icon: Github, href: "https://github.com/ilfa99", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/ilfa-nur-fatimah/", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:ilfanurfatimah.work@gmail.com", label: "Email" },
+                ].map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent"
+                  >
+                    <Icon size={15} />
+                  </a>
+                ))}
             </div>
           </motion.div>
         </div>
@@ -150,10 +153,10 @@ export function Hero() {
 
             {/* Photo circle container */}
             <div
-              className="relative w-75 h-75 md:w-[25rem] md:h-[25rem] rounded-full flex items-center justify-center shadow-2xl bg-background"
+              className="relative w-75 h-75 md:w-[25rem] md:h-[25rem] rounded-full flex items-center justify-center shadow-2xl bg-white dark:bg-[#1E293B] transition-colors duration-500"
               style={{ boxShadow: "0 0 0 3px var(--accent)" }}
             >
-              <div className="w-[92%] h-[92%] rounded-full overflow-hidden border-4 border-background">
+              <div className="w-[92%] h-[92%] rounded-full overflow-hidden border-4 border-white dark:border-[#1E293B] transition-colors duration-500">
                 <img
                   src={heroPhoto}
                   alt="Ilfa Nur Fatimah"
@@ -164,7 +167,7 @@ export function Hero() {
             </div>
 
             {/* Badge */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-card border border-border rounded-full px-4 py-1.5 flex items-center gap-2 shadow-lg whitespace-nowrap">
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white dark:bg-[#1E293B] border border-[#E8DCC7] dark:border-slate-700 rounded-full px-4 py-1.5 flex items-center gap-2 shadow-lg whitespace-nowrap transition-colors duration-500">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span className="text-xs font-medium text-foreground">Available for opportunities</span>
             </div>
