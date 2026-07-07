@@ -79,8 +79,8 @@ export function Contact() {
                 {
                   icon: Linkedin,
                   label: "LinkedIn",
-                  value: "linkedin.com/in/ilfafatimah",
-                  href: "https://linkedin.com/in/ilfafatimah",
+                  value: "www.linkedin.com/in/ilfa-nur-fatimah",
+                  href: "https://www.linkedin.com/in/ilfa-nur-fatimah/",
                 },
               ].map(({ icon: Icon, label, value, href }) => (
                 <a
