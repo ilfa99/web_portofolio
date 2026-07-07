@@ -16,7 +16,7 @@ export function Skills() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader
-          title="Core Skills"
+          title="Technical Skills"
           subtitle="Technologies and tools I use to build digital solutions and secure systems."
         />
 
