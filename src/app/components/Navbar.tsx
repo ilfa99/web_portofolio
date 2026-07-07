@@ -36,8 +36,8 @@ export function Navbar({ theme, setTheme, activeSection }: NavbarProps) {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? "bg-background/95 backdrop-blur-2xl shadow-[0_8px_30px_rgba(15,23,42,0.08)] py-0"
-          : "bg-background/80 backdrop-blur-xl py-1"
+          ? "bg-[#FCF8F0]/95 dark:bg-[#111827]/95 backdrop-blur-2xl shadow-[0_8px_30px_rgba(15,23,42,0.08)] py-0"
+          : "bg-[#FCF8F0]/85 dark:bg-[#111827]/85 backdrop-blur-xl py-1"
           }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between transition-all duration-500">
