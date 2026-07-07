@@ -82,7 +82,7 @@ export function About() {
                 <span className="text-accent font-medium">
                   problem solving
                 </span>{" "}
-                led me to explore various fields — from software development
+                led me to explore various fields from software development
                 using Laravel and Python, to cybersecurity and digital
                 forensics.
               </p>
@@ -99,7 +99,7 @@ export function About() {
 
               <p>
                 The enthusiasm to learn new things always drives me to continue
-                growing — participating in competitions, being active in
+                growing participating in competitions, being active in
                 organizations, and earning certifications across various
                 learning platforms.
               </p>
