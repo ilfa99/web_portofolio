@@ -70,7 +70,7 @@ export function About() {
 
               <p>
                 My interest in{" "}
-                <span className="text-foreground font-medium">
+                <span className="text-accent font-medium">
                   problem solving
                 </span>{" "}
                 led me to explore various fields from software development
@@ -80,7 +80,7 @@ export function About() {
 
               <p>
                 I also have a great interest in{" "}
-                <span className="text-accent font-medium">
+                <span className="text- font-medium">
                   business analysis
                 </span>
                 , understanding that the best technological solutions are born
