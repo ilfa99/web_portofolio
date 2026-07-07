@@ -258,7 +258,7 @@ export function Contact() {
               <div className="flex justify-center py-2">
                 <ReCAPTCHA
                   sitekey="6LdKFUgtAAAAAC6etCsISETZva54IDaLUpmDlFDJ"
-                  onChange={(token: string | null) => setCaptchaToken(token ?? "")}
+                  onChange={(token: string | null) => setCaptchaToken(token ?? "null")}
                 />
               </div>
 

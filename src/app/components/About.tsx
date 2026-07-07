@@ -25,9 +25,9 @@ export function About() {
           {/* Left — info cards */}
           <FadeUp className="grid grid-cols-2 gap-4">
             {[
-              { icon: BookOpen, title: "Student", sub: "Computer Science" },
+              { icon: BookOpen, title: "Cybersecurity", sub: "Enthusiast" },
               { icon: Code2, title: "Software", sub: "Developer" },
-              { icon: Shield, title: "Cybersecurity", sub: "Enthusiast" },
+              { icon: Shield, title: "Fullstack", sub: "developer" },
               { icon: Database, title: "Business", sub: "Analysis Enthusiast" },
             ].map(({ icon: Icon, title, sub }) => (
               <div
