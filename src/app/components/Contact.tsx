@@ -242,6 +242,23 @@ export function Contact() {
                     }))
                   }
                   required
+                  className="
+                        w-full
+                        px-4
+                        py-3
+                        rounded-xl
+                        resize-none
+                        text-sm
+                    leading-relaxed
+                    text-foreground
+                    placeholder:text-slate-400
+                    transition-all
+                    duration-300
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-accent
+                    focus:border-accent
+                  "
                   style={{
                     background: document.documentElement.classList.contains("dark")
                       ? "#0F172A"
@@ -250,6 +267,10 @@ export function Contact() {
                     border: document.documentElement.classList.contains("dark")
                       ? "1px solid #334155"
                       : "1px solid #E8DCC7",
+
+                    color: document.documentElement.classList.contains("dark")
+                      ? "#F8FAFC"
+                      : "#111827",
                   }}
                 />
               </div>
