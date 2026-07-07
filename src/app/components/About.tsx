@@ -23,7 +23,7 @@ export function About() {
 
         <div className="grid md:grid-cols-2 gap-14 items-start">
           {/* Left — info cards */}
-          <FadeUp className="grid grid-cols-2 gap-4">
+          <FadeUp className="grid grid-cols-2 gap-4 mt-8">
             {[
               { icon: BookOpen, title: "Cybersecurity", sub: "Enthusiast" },
               { icon: Code2, title: "Software", sub: "Developer" },
@@ -47,15 +47,6 @@ export function About() {
                 </p>
               </div>
             ))}
-
-            {/* Image */}
-            <div className="col-span-2 rounded-2xl overflow-hidden h-52 bg-white border border-[#EFE5D6] shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=700&h=400&fit=crop&auto=format"
-                alt="Technology workspace"
-                className="w-full h-full object-cover opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-500"
-              />
-            </div>
           </FadeUp>
 
           {/* Right — bio */}
