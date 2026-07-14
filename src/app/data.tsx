@@ -12,11 +12,28 @@ import semifinalImg from "../assets/semifinal.jpeg";
 
 export const NAV_LINKS = ["About", "Skills", "Projects", "Certificates", "Contact"];
 
-export const CORE_SKILLS = [
-  "Python", "Laravel", "Java", "MySQL", "C++",
-  "Linux", "Wireshark", "Burp Suite",
-  "Autopsy", "NetworkMiner", "FTK Imager",
+export interface SkillCategory {
+  title: string;
+  skills: string[];
+}
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    title: "Programming Languages",
+    skills: ["Python", "Java", "C++"],
+  },
+  {
+    title: "Frameworks & Databases",
+    skills: ["Laravel", "MySQL"],
+  },
+  {
+    title: "Cybersecurity & Forensics Tools",
+    skills: ["Linux", "Wireshark", "Burp Suite", "Autopsy", "NetworkMiner", "FTK Imager"],
+  },
 ];
+
+export const CORE_SKILLS = SKILL_CATEGORIES.flatMap((cat) => cat.skills);
+
 
 export const SkillIcons: Record<string, React.ReactNode> = {
   Laravel: (

@@ -1,7 +1,7 @@
 import React from "react";
 import { SectionHeader } from "./SectionHeader";
 import { FadeUp } from "./FadeUp";
-import { CORE_SKILLS, SkillIcons } from "../data";
+import { SKILL_CATEGORIES, SkillIcons } from "../data";
 
 export function Skills() {
   return (
@@ -20,103 +20,98 @@ export function Skills() {
           subtitle="Technologies and tools I use to build digital solutions and secure systems."
         />
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-            gap: "1.5rem",
-            maxWidth: "680px",
-            margin: "0 auto",
-          }}
-        >
-          {CORE_SKILLS.map((skill, i) => (
-            <FadeUp key={skill} delay={i * 0.05}>
-              <div
-                className="group"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "0.75rem",
-                }}
-              >
-                {/* Circular icon container */}
-                <div
-                  className="group-hover:-translate-y-1 transition-colors duration-500"
+        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+          {SKILL_CATEGORIES.map((category, catIdx) => (
+            <FadeUp key={category.title} delay={catIdx * 0.1}>
+              <div>
+                {/* Category title */}
+                <h3
+                  className="text-foreground transition-colors duration-500"
                   style={{
-                    width: "90px",
-                    height: "90px",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
-                    cursor: "pointer",
-
-                    background:
-                      "var(--skill-card-bg, #FCF8F0)",
-
-                    border:
-                      "1px solid var(--skill-card-border, #E8DCC7)",
-
-                    boxShadow:
-                      "0 6px 18px rgba(183,163,126,0.10)",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
-
-                    el.style.transform = "scale(1.08) translateY(-4px)";
-                    el.style.background = "#FFFDF9";
-                    el.style.borderColor = "var(--accent)";
-                    el.style.boxShadow =
-                      "0 14px 35px rgba(190,160,100,0.20), 0 0 0 2px rgba(212,175,55,0.15)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
-
-                    el.style.transform = "scale(1) translateY(0)";
-
-                    if (document.documentElement.classList.contains("dark")) {
-                      el.style.background = "#1E293B";
-                      el.style.borderColor = "#334155";
-                      el.style.boxShadow =
-                        "0 8px 24px rgba(0,0,0,0.30)";
-                    } else {
-                      el.style.background = "#FCF8F0";
-                      el.style.borderColor = "#E8DCC7";
-                      el.style.boxShadow =
-                        "0 6px 18px rgba(183,163,126,0.10)";
-                    }
-                  }}
-                  tabIndex={0}
-                  aria-label={skill}
-                  ref={(el) => {
-                    if (!el) return;
-
-                    if (document.documentElement.classList.contains("dark")) {
-                      el.style.background = "#1E293B";
-                      el.style.borderColor = "#334155";
-                      el.style.boxShadow =
-                        "0 8px 24px rgba(0,0,0,0.30)";
-                    }
-                  }}
-                >
-                  {SkillIcons[skill]}
-                </div>
-
-                {/* Skill name */}
-                <span
-                  className="text-foreground transition-colors duration-300 group-hover:text-accent"
-                  style={{
-                    fontSize: "0.78rem",
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "1.15rem",
                     fontWeight: 500,
+                    marginBottom: "1.25rem",
                     textAlign: "center",
-                    letterSpacing: "0.01em",
-                    lineHeight: 1.3,
                   }}
                 >
-                  {skill}
-                </span>
+                  {category.title}
+                </h3>
+
+                {/* Skills grid */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "1.5rem",
+                  }}
+                >
+                  {category.skills.map((skill, i) => (
+                    <FadeUp key={skill} delay={catIdx * 0.1 + i * 0.05}>
+                      <div
+                        className="group"
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "0.75rem",
+                          width: "120px",
+                        }}
+                      >
+                        {/* Circular icon container */}
+                        <div
+                          className="group-hover:-translate-y-1 transition-colors duration-500"
+                          style={{
+                            width: "90px",
+                            height: "90px",
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
+                            cursor: "pointer",
+                            background: "var(--skill-card-bg)",
+                            border: "1px solid var(--skill-card-border)",
+                            boxShadow: "var(--skill-card-shadow)",
+                          }}
+                          onMouseEnter={(e) => {
+                            const el = e.currentTarget;
+                            el.style.transform = "scale(1.08) translateY(-4px)";
+                            el.style.borderColor = "var(--accent)";
+                            el.style.boxShadow =
+                              "0 14px 35px rgba(190,160,100,0.20), 0 0 0 2px rgba(212,175,55,0.15)";
+                          }}
+                          onMouseLeave={(e) => {
+                            const el = e.currentTarget;
+                            el.style.transform = "scale(1) translateY(0)";
+                            el.style.background = "var(--skill-card-bg)";
+                            el.style.borderColor = "var(--skill-card-border)";
+                            el.style.boxShadow = "var(--skill-card-shadow)";
+                          }}
+                          tabIndex={0}
+                          aria-label={skill}
+                        >
+                          {SkillIcons[skill]}
+                        </div>
+
+                        {/* Skill name */}
+                        <span
+                          className="text-foreground transition-colors duration-300 group-hover:text-accent"
+                          style={{
+                            fontSize: "0.78rem",
+                            fontWeight: 500,
+                            textAlign: "center",
+                            letterSpacing: "0.01em",
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          {skill}
+                        </span>
+                      </div>
+                    </FadeUp>
+                  ))}
+                </div>
               </div>
             </FadeUp>
           ))}

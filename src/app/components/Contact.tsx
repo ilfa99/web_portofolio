@@ -90,33 +90,22 @@ export function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-accent"
                   style={{
-                    background: document.documentElement.classList.contains("dark")
-                      ? "#1E293B"
-                      : "#FFFFFF",
-
-                    border: document.documentElement.classList.contains("dark")
-                      ? "1px solid #334155"
-                      : "1px solid #E8DCC7",
-
-                    boxShadow: document.documentElement.classList.contains("dark")
-                      ? "0 10px 30px rgba(0,0,0,.35)"
-                      : "0 8px 24px rgba(183,163,126,.08)"
+                    background: "var(--card-bg)",
+                    border: "1px solid var(--card-border)",
+                    boxShadow: "var(--card-shadow)",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
-
                     el.style.transform = "translateY(-4px)";
                     el.style.borderColor = "var(--accent)";
-                    el.style.boxShadow =
-                      "0 18px 40px rgba(190,160,100,0.18)";
+                    el.style.boxShadow = "var(--card-hover-shadow)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget;
-
                     el.style.transform = "translateY(0)";
-                    el.style.borderColor = "#E8DCC7";
-                    el.style.boxShadow =
-                      "0 8px 24px rgba(183,163,126,0.08)";
+                    el.style.background = "var(--card-bg)";
+                    el.style.borderColor = "var(--card-border)";
+                    el.style.boxShadow = "var(--card-shadow)";
                   }}
                 >
                   <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors duration-200">
@@ -146,19 +135,11 @@ export function Contact() {
           <FadeUp delay={0.1}>
             <form
               onSubmit={handleSend}
-              className="
-            rounded-2xl
-            p-7
-            space-y-4
-            bg-white
-            dark:bg-slate-800
-            border
-            border-[#E8DCC7]
-            dark:border-slate-700
-            shadow-lg
-            transition-all
-            duration-500
-            "
+              className="rounded-2xl p-7 space-y-4 shadow-lg transition-all duration-500"
+              style={{
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
+              }}
             >
               <h3
                 className="font-semibold text-foreground mb-5"
@@ -204,19 +185,11 @@ export function Contact() {
                       }))
                     }
                     required
-                    className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                     style={{
-                      background: document.documentElement.classList.contains("dark")
-                        ? "#0F172A"
-                        : "#FFFDF9",
-
-                      border: document.documentElement.classList.contains("dark")
-                        ? "1px solid #334155"
-                        : "1px solid #E8DCC7",
-
-                      color: document.documentElement.classList.contains("dark")
-                        ? "#F8FAFC"
-                        : "#111827",
+                      background: "var(--input-field-bg)",
+                      border: "1px solid var(--input-field-border)",
+                      color: "var(--input-field-color)",
                     }}
                   />
                 </div>
@@ -242,35 +215,11 @@ export function Contact() {
                     }))
                   }
                   required
-                  className="
-                        w-full
-                        px-4
-                        py-3
-                        rounded-xl
-                        resize-none
-                        text-sm
-                    leading-relaxed
-                    text-foreground
-                    placeholder:text-slate-400
-                    transition-all
-                    duration-300
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-accent
-                    focus:border-accent
-                  "
+                  className="w-full px-4 py-3 rounded-xl resize-none text-sm leading-relaxed placeholder:text-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
                   style={{
-                    background: document.documentElement.classList.contains("dark")
-                      ? "#0F172A"
-                      : "#FFFDF9",
-
-                    border: document.documentElement.classList.contains("dark")
-                      ? "1px solid #334155"
-                      : "1px solid #E8DCC7",
-
-                    color: document.documentElement.classList.contains("dark")
-                      ? "#F8FAFC"
-                      : "#111827",
+                    background: "var(--input-field-bg)",
+                    border: "1px solid var(--input-field-border)",
+                    color: "var(--input-field-color)",
                   }}
                 />
               </div>

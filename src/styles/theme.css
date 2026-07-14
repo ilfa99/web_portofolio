@@ -39,6 +39,29 @@
   --sidebar-accent-foreground: #0F172A;
   --sidebar-border: rgba(15, 23, 42, 0.1);
   --sidebar-ring: rgba(212, 175, 55, 0.4);
+
+  /* Card system */
+  --card-bg: #FFFFFF;
+  --card-border: #E8DCC7;
+  --card-shadow: 0 8px 24px rgba(183,163,126,0.08);
+  --card-hover-shadow: 0 18px 45px rgba(190,160,100,0.18);
+
+  /* Skill card */
+  --skill-card-bg: #FCF8F0;
+  --skill-card-border: #E8DCC7;
+  --skill-card-shadow: 0 6px 18px rgba(183,163,126,0.10);
+
+  /* Input fields */
+  --input-field-bg: #FFFDF9;
+  --input-field-border: #E8DCC7;
+  --input-field-color: #111827;
+
+  /* Tag */
+  --tag-bg: #FCF8F0;
+  --tag-border: #E8DCC7;
+
+  /* Image area bg */
+  --image-area-bg: #F7F2E9;
 }
 
 .dark {
@@ -73,6 +96,29 @@
   --sidebar-accent-foreground: #F8F7F2;
   --sidebar-border: rgba(248, 247, 242, 0.1);
   --sidebar-ring: rgba(212, 175, 55, 0.4);
+
+  /* Card system */
+  --card-bg: #1E293B;
+  --card-border: #334155;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --card-hover-shadow: 0 18px 45px rgba(0,0,0,0.45);
+
+  /* Skill card */
+  --skill-card-bg: #1E293B;
+  --skill-card-border: #334155;
+  --skill-card-shadow: 0 8px 24px rgba(0,0,0,0.30);
+
+  /* Input fields */
+  --input-field-bg: #0F172A;
+  --input-field-border: #334155;
+  --input-field-color: #F8FAFC;
+
+  /* Tag */
+  --tag-bg: #334155;
+  --tag-border: #475569;
+
+  /* Image area bg */
+  --image-area-bg: #0F172A;
 }
 
 @theme inline {

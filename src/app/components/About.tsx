@@ -11,11 +11,7 @@ export function About() {
     >
       {/* Soft transition from Hero */}
       <div
-        className="absolute top-0 left-0 w-full h-24 transition-colors duration-500"
-        style={{
-          background:
-            "linear-gradient(to bottom, #FFFFFF 0%, #FEFCF8 45%, #FCF8F0 100%)",
-        }}
+        className="absolute top-0 left-0 w-full h-24 transition-colors duration-500 bg-gradient-to-b from-white via-[#FEFCF8] to-[#FCF8F0] dark:from-[#0F172A] dark:via-[#131d33] dark:to-[#111827]"
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">

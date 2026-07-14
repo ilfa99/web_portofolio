@@ -27,53 +27,29 @@ export function Certificates() {
                 tabIndex={0}
                 aria-label={`View certificate: ${cert.name}`}
                 style={{
-                  background: document.documentElement.classList.contains("dark")
-                    ? "#1E293B"
-                    : "#FFFFFF",
-
-                  border: document.documentElement.classList.contains("dark")
-                    ? "1px solid #334155"
-                    : "1px solid #E8DCC7",
-
-                  boxShadow: document.documentElement.classList.contains("dark")
-                    ? "0 10px 30px rgba(0,0,0,0.35)"
-                    : "0 8px 24px rgba(183,163,126,0.08)",
+                  background: "var(--card-bg)",
+                  border: "1px solid var(--card-border)",
+                  boxShadow: "var(--card-shadow)",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget;
-
                   el.style.transform = "translateY(-6px)";
                   el.style.borderColor = "var(--accent)";
-                  el.style.boxShadow =
-                    "0 18px 45px rgba(190,160,100,0.18)";
+                  el.style.boxShadow = "var(--card-hover-shadow)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget;
-
                   el.style.transform = "translateY(0)";
-
-                  if (document.documentElement.classList.contains("dark")) {
-                    el.style.background = "#1E293B";
-                    el.style.borderColor = "#334155";
-                    el.style.boxShadow =
-                      "0 10px 30px rgba(0,0,0,0.35)";
-                  } else {
-                    el.style.background = "#FFFFFF";
-                    el.style.borderColor = "#E8DCC7";
-                    el.style.boxShadow =
-                      "0 8px 24px rgba(183,163,126,0.08)";
-                  }
+                  el.style.background = "var(--card-bg)";
+                  el.style.borderColor = "var(--card-border)";
+                  el.style.boxShadow = "var(--card-shadow)";
                 }}
               >
                 {/* Thumbnail */}
                 <div
                   className="relative h-40 overflow-hidden transition-colors duration-500"
                   style={{
-                    background: document.documentElement.classList.contains(
-                      "dark"
-                    )
-                      ? "#0F172A"
-                      : "#F8F3EB",
+                    background: "var(--image-area-bg)",
                   }}
                 >
                   <img
