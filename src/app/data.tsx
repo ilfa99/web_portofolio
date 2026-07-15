@@ -22,29 +22,40 @@ export interface SkillCategory {
 }
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
+
   {
-    title: "Business Analysis",
-    skills: ["Business Analysis", "BRD", "Functional Requirements", "Use Case", "ERD"],
+    title: "Governance, Risk & Compliance",
+    skills: ["Risk Assessment", "Threat Modeling", "Compliance Tracking", "Audit & Evidence Collection"],
   },
-  {
-    title: "Frontend Development",
-    skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Vite", "Git", "GitHub"],
-  },
+
   {
     title: "Cybersecurity",
     skills: ["Linux", "Kali Linux", "Nmap", "Metasploit", "Cryptography", "Network Security", "OWASP", "Wireshark"],
   },
+
   {
-    title: "Programming Languages",
-    skills: ["Python", "Java", "C++"],
+    title: "Forensics Tools",
+    skills: ["Burp Suite", "Autopsy", "NetworkMiner", "FTK Imager"],
   },
+
   {
     title: "Frameworks & Databases",
     skills: ["Laravel", "MySQL", "Google OAuth"],
   },
+
   {
-    title: "Forensics Tools",
-    skills: ["Burp Suite", "Autopsy", "NetworkMiner", "FTK Imager"],
+    title: "Programming Languages",
+    skills: ["Python", "Java", "C++"],
+  },
+
+  {
+    title: "Frontend Development",
+    skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Vite", "Git", "GitHub"],
+  },
+
+  {
+    title: "Business Analysis",
+    skills: ["Business Analysis", "BRD", "Functional Requirements", "Use Case", "ERD"],
   },
 ];
 
