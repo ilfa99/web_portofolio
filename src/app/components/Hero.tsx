@@ -23,7 +23,6 @@ const roles = [
   "Problem Solving",
   "Informatics Student",
   "Backend Developer",
-  "Designing digital systems and solutions to solve real-world problems.",
 ];
 
 export function Hero() {
@@ -130,6 +129,22 @@ export function Hero() {
                 </motion.p>
               </AnimatePresence>
             </div>
+
+            <p
+              className="text-muted-foreground mb-8 max-w-md"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontSize: "1.05rem",
+                lineHeight: 1.6,
+                letterSpacing: "0.01em",
+                borderLeft: "2px solid var(--accent)",
+                paddingLeft: "1rem",
+              }}
+            >
+              Designing digital systems and solutions to solve real-world problems.
+            </p>
 
             <div className="flex items-center gap-4">
               <button
