@@ -9,6 +9,10 @@ import top10Img from "../assets/ten.png";
 import innovationImg from "../assets/ino.png";
 import visualSlidesImg from "../assets/ppt.png";
 import semifinalImg from "../assets/semifinal.jpeg";
+import portfolioDummyImg from "../assets/webporto.png";
+import bestInnovationPdf from "../assets/IlfaNurFatimah(1).pdf";
+import top10Pdf from "../assets/IlfaNurFatimah(2).pdf";
+import bestVisualPdf from "../assets/IlfaNurFatimah.pdf";
 
 export const NAV_LINKS = ["About", "Skills", "Projects", "Certificates", "Contact"];
 
@@ -19,16 +23,28 @@ export interface SkillCategory {
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
+    title: "Business Analysis",
+    skills: ["Business Analysis", "BRD", "Functional Requirements", "Use Case", "ERD"],
+  },
+  {
+    title: "Frontend Development",
+    skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Vite", "Git", "GitHub"],
+  },
+  {
+    title: "Cybersecurity",
+    skills: ["Linux", "Kali Linux", "Nmap", "Metasploit", "Cryptography", "Network Security", "OWASP", "Wireshark"],
+  },
+  {
     title: "Programming Languages",
     skills: ["Python", "Java", "C++"],
   },
   {
     title: "Frameworks & Databases",
-    skills: ["Laravel", "MySQL"],
+    skills: ["Laravel", "MySQL", "Google OAuth"],
   },
   {
-    title: "Cybersecurity & Forensics Tools",
-    skills: ["Linux", "Wireshark", "Burp Suite", "Autopsy", "NetworkMiner", "FTK Imager"],
+    title: "Forensics Tools",
+    skills: ["Burp Suite", "Autopsy", "NetworkMiner", "FTK Imager"],
   },
 ];
 
@@ -130,11 +146,12 @@ export const SkillIcons: Record<string, React.ReactNode> = {
 
 export const PROJECTS = [
   {
-    title: "SRM Cyber Audit Dashboard",
-    desc: "Developed a web-based Security Risk Management (SRM) dashboard that enables organizations to manage cybersecurity audits, vulnerability assessments, organizational assets, compliance tracking, evidence collection, audit findings, and AI-powered security recommendations through a centralized platform.",
-    tags: ["PHP", "MySQL", "Bootstrap", "Cybersecurity"],
-    image: mamochaImg,
-    category: "Cybersecurity",
+    title: "Portfolio Website",
+    desc: "Designed and developed a personal portfolio website showcasing my skills, projects, and certificates with a modern, responsive interface and interactive animations.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    image: portfolioDummyImg,
+    category: "Web Development",
+    github: "https://github.com/ilfa99/web_portofolio",
   },
   {
     title: "CipherX Secure File Encryption System",
@@ -142,6 +159,7 @@ export const PROJECTS = [
     tags: ["AES-256", "RSA", "Web Crypto API", "JavaScript"],
     image: cipherxImg,
     category: "Cybersecurity",
+    github: "https://github.com/ilfa99/File_Encryption_System",
   },
   {
     title: "MyClinic - Healthcare Mobile Application",
@@ -149,6 +167,14 @@ export const PROJECTS = [
     tags: ["Java", "Android Studio", "XML", "SQLite"],
     image: androidImg,
     category: "Mobile Development",
+    github: "https://github.com/ilfa99/MyClinic-Healthcare-Mobile-Application",
+  },
+  {
+    title: "SRM Cyber Audit Dashboard",
+    desc: "Developed a web-based Security Risk Management (SRM) dashboard that enables organizations to manage cybersecurity audits, vulnerability assessments, organizational assets, compliance tracking, evidence collection, audit findings, and AI-powered security recommendations through a centralized platform.",
+    tags: ["PHP", "MySQL", "Bootstrap", "Cybersecurity"],
+    image: mamochaImg,
+    category: "Cybersecurity",
   },
   {
     title: "Digital Forensics Investigation Using Autopsy",
@@ -172,18 +198,21 @@ export const CERTIFICATES = [
     issuer: "International Essay Competition & English Camp (ICEC) Thailand 2026",
     image: top10Img,
     color: "#D4AF37",
+    pdfUrl: top10Pdf,
   },
   {
     name: "Best Innovation Award",
     issuer: "International Essay Competition & English Camp (ICEC) Thailand 2026",
     image: innovationImg,
     color: "#D4AF37",
+    pdfUrl: bestInnovationPdf,
   },
   {
     name: "Best Visual Slides Award",
     issuer: "International Essay Competition & English Camp (ICEC) Thailand 2026",
     image: visualSlidesImg,
     color: "#D4AF37",
+    pdfUrl: bestVisualPdf,
   },
   {
     name: "Semifinalist",

@@ -3,19 +3,19 @@
 :root {
   --font-size: 16px;
   --background: #F8F7F2;
-  --foreground: #0F172A;
+  --foreground: #000000;
   --card: #ffffff;
-  --card-foreground: #0F172A;
+  --card-foreground: #000000;
   --popover: #ffffff;
-  --popover-foreground: #0F172A;
+  --popover-foreground: #000000;
   --primary: #0F172A;
   --primary-foreground: #F8F7F2;
   --secondary: #EEEEE9;
-  --secondary-foreground: #0F172A;
+  --secondary-foreground: #000000;
   --muted: #EEEEE9;
-  --muted-foreground: #64748B;
+  --muted-foreground: #000000;
   --accent: #D4AF37;
-  --accent-foreground: #0F172A;
+  --accent-foreground: #000000;
   --destructive: #c0392b;
   --destructive-foreground: #ffffff;
   --border: rgba(15, 23, 42, 0.1);
@@ -32,11 +32,11 @@
   --chart-5: #e2c96e;
   --radius: 0.75rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0F172A;
-  --sidebar-primary: #0F172A;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000000;
   --sidebar-primary-foreground: #F8F7F2;
   --sidebar-accent: #EEEEE9;
-  --sidebar-accent-foreground: #0F172A;
+  --sidebar-accent-foreground: #000000;
   --sidebar-border: rgba(15, 23, 42, 0.1);
   --sidebar-ring: rgba(212, 175, 55, 0.4);
 
@@ -54,7 +54,7 @@
   /* Input fields */
   --input-field-bg: #FFFDF9;
   --input-field-border: #E8DCC7;
-  --input-field-color: #111827;
+  --input-field-color: #000000;
 
   /* Tag */
   --tag-bg: #FCF8F0;
@@ -66,19 +66,19 @@
 
 .dark {
   --background: #0F172A;
-  --foreground: #F8F7F2;
+  --foreground: #ffffff;
   --card: #1E293B;
-  --card-foreground: #F8F7F2;
+  --card-foreground: #ffffff;
   --popover: #1E293B;
-  --popover-foreground: #F8F7F2;
-  --primary: #F8F7F2;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
   --primary-foreground: #0F172A;
   --secondary: #1E293B;
-  --secondary-foreground: #F8F7F2;
+  --secondary-foreground: #ffffff;
   --muted: #1E293B;
-  --muted-foreground: #94A3B8;
+  --muted-foreground: #ffffff;
   --accent: #D4AF37;
-  --accent-foreground: #0F172A;
+  --accent-foreground: #000000;
   --destructive: #c0392b;
   --destructive-foreground: #ffffff;
   --border: rgba(248, 247, 242, 0.1);

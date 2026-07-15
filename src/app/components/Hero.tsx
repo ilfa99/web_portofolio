@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "motion/react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ChevronDown, Database, Network, Cpu, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import heroPhoto from "../../assets/ilfasatu2.jpg";
 
@@ -16,7 +16,26 @@ const GridDots = () => (
   </div>
 );
 
+const roles = [
+  "Fullstack Developer",
+  "GRC Enthusiast",
+  "Cybersecurity Enthusiast",
+  "Problem Solving",
+  "Informatics Student",
+  "Backend Developer",
+  "Designing digital systems and solutions to solve real-world problems.",
+];
+
 export function Hero() {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -24,7 +43,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-white dark:bg-[#0F172A] transition-colors duration-500"
+      className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-[#FAF9F6] dark:bg-[#0F172A] transition-colors duration-500"
     >
       <GridDots />
 
@@ -96,9 +115,21 @@ export function Hero() {
               <span className="text-accent">Fatimah</span>
             </h1>
 
-            <p className="text-muted-foreground leading-relaxed mb-8 max-w-md" style={{ fontSize: "1.05rem", fontWeight: 300 }}>
-              Designing digital systems and solutions to solve real-world problems.
-            </p>
+            <div className="h-8 mb-8">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentRoleIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-muted-foreground leading-relaxed"
+                  style={{ fontSize: "1.25rem", fontWeight: 400 }}
+                >
+                  {roles[currentRoleIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
 
             <div className="flex items-center gap-4">
               <button
@@ -169,7 +200,7 @@ export function Hero() {
             {/* Badge */}
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white dark:bg-[#1E293B] border border-[#E8DCC7] dark:border-slate-700 rounded-full px-4 py-1.5 flex items-center gap-2 shadow-lg whitespace-nowrap transition-colors duration-500">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs font-medium text-foreground">Available for opportunities</span>
+              <span className="text-xs font-medium text-foreground">Available for Intern and Work</span>
             </div>
           </div>
         </motion.div>

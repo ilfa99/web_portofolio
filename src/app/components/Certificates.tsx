@@ -8,10 +8,8 @@ export function Certificates() {
   return (
     <section
       id="certificates"
-      className="relative py-19 bg-white dark:bg-[#0F172A] transition-colors duration-700 overflow-hidden"
+      className="relative py-19 bg-[#FAF9F6] dark:bg-[#0F172A] transition-colors duration-700 overflow-hidden"
     >
-      {/* Soft transition from Projects */}
-      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#FCF8F0] via-[#FBF8F2] to-white dark:from-[#111827] dark:via-[#162033] dark:to-[#0F172A] transition-all duration-700" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader
@@ -20,11 +18,18 @@ export function Certificates() {
         />
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {CERTIFICATES.map((cert, i) => (
+          {CERTIFICATES.map((cert, i) => {
+            const pdfUrl = (cert as any).pdfUrl;
+            const CardWrapper = pdfUrl ? "a" : "div";
+            const wrapperProps = pdfUrl
+              ? { href: pdfUrl, target: "_blank", rel: "noopener noreferrer" }
+              : {};
+
+            return (
             <FadeUp key={cert.name} delay={i * 0.07}>
-              <div
-                className="rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300"
-                tabIndex={0}
+              <CardWrapper
+                {...wrapperProps}
+                className={`block rounded-2xl overflow-hidden transition-all duration-300 ${pdfUrl ? "group cursor-pointer" : "cursor-default"}`}
                 aria-label={`View certificate: ${cert.name}`}
                 style={{
                   background: "var(--card-bg)",
@@ -55,7 +60,7 @@ export function Certificates() {
                   <img
                     src={cert.image}
                     alt={cert.name}
-                    className="w-full h-full object-cover opacity-75 group-hover:opacity-95 group-hover:scale-110 transition-all duration-700"
+                    className={`w-full h-full object-cover opacity-75 transition-all duration-700 ${pdfUrl ? "group-hover:opacity-95 group-hover:scale-110" : ""}`}
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
@@ -69,18 +74,20 @@ export function Certificates() {
                     </div>
                   </div>
 
-                  <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/25 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
-                    <ExternalLink
-                      size={12}
-                      className="text-white"
-                    />
-                  </button>
+                  {pdfUrl && (
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/25 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
+                      <ExternalLink
+                        size={12}
+                        className="text-white"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Info */}
                 <div className="p-5">
                   <h3
-                    className="font-semibold text-foreground mb-2 leading-snug group-hover:text-accent transition-colors duration-200"
+                    className={`font-semibold text-foreground mb-2 leading-snug transition-colors duration-200 ${pdfUrl ? "group-hover:text-accent" : ""}`}
                     style={{
                       fontSize: "0.95rem",
                     }}
@@ -92,9 +99,10 @@ export function Certificates() {
                     {cert.issuer}
                   </p>
                 </div>
-              </div>
+              </CardWrapper>
             </FadeUp>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

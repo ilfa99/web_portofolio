@@ -12,8 +12,6 @@ import { FadeUp } from "./FadeUp";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
     message: "",
   });
 
@@ -28,17 +26,17 @@ export function Contact() {
       return;
     }
 
-    // Nanti di sini bisa diganti EmailJS / Formspree
-
     setSent(true);
+
+    window.location.href = `mailto:ilfanurfatimah.work@gmail.com?subject=Message from Portfolio&body=${encodeURIComponent(
+      formData.message
+    )}`;
 
     setTimeout(() => {
       setSent(false);
     }, 3500);
 
     setFormData({
-      name: "",
-      email: "",
       message: "",
     });
 
@@ -50,8 +48,6 @@ export function Contact() {
       id="contact"
       className="relative py-15 bg-[#FCF8F0] dark:bg-[#111827] transition-colors duration-700 overflow-hidden"
     >
-      {/* Soft transition from Certifications */}
-      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white via-[#FBF8F2] to-[#FCF8F0] dark:from-[#0F172A] dark:via-[#162033] dark:to-[#111827] transition-all duration-700" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader
@@ -151,49 +147,7 @@ export function Contact() {
                 Send a Message
               </h3>
 
-              {[
-                {
-                  key: "name",
-                  label: "Name",
-                  type: "text",
-                  placeholder: "Your full name",
-                },
-                {
-                  key: "email",
-                  label: "Email",
-                  type: "email",
-                  placeholder: "email@example.com",
-                },
-              ].map(({ key, label, type, placeholder }) => (
-                <div key={key}>
-                  <label
-                    className="block text-sm font-medium text-foreground mb-1.5"
-                    htmlFor={key}
-                  >
-                    {label}
-                  </label>
-
-                  <input
-                    id={key}
-                    type={type}
-                    placeholder={placeholder}
-                    value={formData[key as keyof typeof formData]}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        [key]: e.target.value,
-                      }))
-                    }
-                    required
-                    className="w-full px-4 py-3 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
-                    style={{
-                      background: "var(--input-field-bg)",
-                      border: "1px solid var(--input-field-border)",
-                      color: "var(--input-field-color)",
-                    }}
-                  />
-                </div>
-              ))}
+              {/* Only message field remaining */}
 
               <div>
                 <label
@@ -234,7 +188,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                disabled={sent || !captchaToken}
+                disabled={sent || !formData.message || !captchaToken}
                 className="w-full flex items-center justify-center gap-2 py-3 h-12 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {sent ? (

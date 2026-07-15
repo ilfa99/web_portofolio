@@ -10,8 +10,6 @@ export function Projects() {
       id="projects"
       className="relative py-20 bg-[#FCF8F0] dark:bg-[#111827] transition-colors duration-700 overflow-hidden"
     >
-      {/* Soft transition from Skills */}
-      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white via-[#FBF8F2] to-[#FCF8F0] dark:from-[#0F172A] dark:via-[#162033] dark:to-[#111827] transition-all duration-700" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader
@@ -95,17 +93,21 @@ export function Projects() {
                     ))}
                   </div>
 
-                  <button
-                    className="group/btn flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all duration-200 focus:outline-none focus:underline"
-                    aria-label={`View details of ${project.title}`}
-                  >
-                    Project Details
-
-                    <ExternalLink
-                      size={13}
-                      className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200"
-                    />
-                  </button>
+                  {(project as any).github ? (
+                    <a
+                      href={(project as any).github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn flex w-fit items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all duration-200 focus:outline-none focus:underline"
+                      aria-label={`View source code of ${project.title}`}
+                    >
+                      View on GitHub
+                      <ExternalLink
+                        size={13}
+                        className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200"
+                      />
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </FadeUp>

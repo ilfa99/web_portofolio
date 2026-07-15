@@ -9,49 +9,17 @@ export function About() {
       id="about"
       className="relative py-20 bg-[#FCF8F0] dark:bg-[#111827] transition-colors duration-500 overflow-hidden"
     >
-      {/* Soft transition from Hero */}
-      <div
-        className="absolute top-0 left-0 w-full h-24 transition-colors duration-500 bg-gradient-to-b from-white via-[#FEFCF8] to-[#FCF8F0] dark:from-[#0F172A] dark:via-[#131d33] dark:to-[#111827]"
-      />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <SectionHeader title="About Me" />
 
-        <div className="grid md:grid-cols-2 gap-14 items-start">
-          {/* Left — info cards */}
-          <FadeUp className="grid grid-cols-2 gap-4 mt-8">
-            {[
-              { icon: BookOpen, title: "Cybersecurity", sub: "Enthusiast" },
-              { icon: Code2, title: "Software", sub: "Developer" },
-              { icon: Shield, title: "Fullstack", sub: "developer" },
-              { icon: Database, title: "Business", sub: "Analysis Enthusiast" },
-            ].map(({ icon: Icon, title, sub }) => (
-              <div
-                key={title}
-                className="bg-white dark:bg-[#1E293B] border border-[#E8DCC7] dark:border-slate-700 rounded-2xl p-6 hover:border-accent/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
-                  <Icon size={20} className="text-accent" />
-                </div>
-
-                <p className="font-semibold text-foreground text-sm">
-                  {title}
-                </p>
-
-                <p className="text-muted-foreground text-xs mt-0.5">
-                  {sub}
-                </p>
-              </div>
-            ))}
-          </FadeUp>
-
-          {/* Right — bio */}
+        <div className="max-w-3xl mx-auto">
           <FadeUp delay={0.15}>
             <div
-              className="space-y-5 text-muted-foreground leading-relaxed"
+              className="space-y-6 text-muted-foreground leading-relaxed text-center"
               style={{
                 fontWeight: 300,
-                fontSize: "0.96rem",
+                fontSize: "1.05rem",
               }}
             >
               <p>
