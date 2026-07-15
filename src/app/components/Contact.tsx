@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Github,
@@ -10,15 +11,23 @@ import {
 import { SectionHeader } from "./SectionHeader";
 import { FadeUp } from "./FadeUp";
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 export function Contact() {
   const [formData, setFormData] = useState({
+    name: "",
+    email: "",
     message: "",
   });
 
   const [sent, setSent] = useState(false);
   const [captchaToken, setCaptchaToken] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!captchaToken) {
@@ -26,21 +35,40 @@ export function Contact() {
       return;
     }
 
-    setSent(true);
+    setIsSending(true);
 
-    window.location.href = `mailto:ilfanurfatimah.work@gmail.com?subject=Message from Portfolio&body=${encodeURIComponent(
-      formData.message
-    )}`;
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      );
 
-    setTimeout(() => {
-      setSent(false);
-    }, 3500);
+      setSent(true);
 
-    setFormData({
-      message: "",
-    });
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
 
-    setCaptchaToken("null");
+      recaptchaRef.current?.reset();
+      setCaptchaToken("");
+
+      setTimeout(() => {
+        setSent(false);
+      }, 3500);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -147,7 +175,63 @@ export function Contact() {
                 Send a Message
               </h3>
 
-              {/* Only message field remaining */}
+              <div>
+                <label
+                  className="block text-sm font-medium text-foreground mb-1.5"
+                  htmlFor="name"
+                >
+                  Name
+                </label>
+
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      name: e.target.value,
+                    }))
+                  }
+                  required
+                  className="w-full px-4 py-3 rounded-xl text-sm leading-relaxed placeholder:text-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+                  style={{
+                    background: "var(--input-field-bg)",
+                    border: "1px solid var(--input-field-border)",
+                    color: "var(--input-field-color)",
+                  }}
+                />
+              </div>
+
+              <div>
+                <label
+                  className="block text-sm font-medium text-foreground mb-1.5"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      email: e.target.value,
+                    }))
+                  }
+                  required
+                  className="w-full px-4 py-3 rounded-xl text-sm leading-relaxed placeholder:text-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+                  style={{
+                    background: "var(--input-field-bg)",
+                    border: "1px solid var(--input-field-border)",
+                    color: "var(--input-field-color)",
+                  }}
+                />
+              </div>
 
               <div>
                 <label
@@ -181,20 +265,28 @@ export function Contact() {
               {/* CAPTCHA */}
               <div className="flex justify-center py-2">
                 <ReCAPTCHA
+                  ref={recaptchaRef}
                   sitekey="6LdKFUgtAAAAAC6etCsISETZva54IDaLUpmDlFDJ"
-                  onChange={(token: string | null) => setCaptchaToken(token ?? "null")}
+                  onChange={(token: string | null) => setCaptchaToken(token ?? "")}
                 />
               </div>
 
               <button
                 type="submit"
-                disabled={sent || !formData.message || !captchaToken}
+                disabled={
+                  sent ||
+                  isSending ||
+                  !formData.name ||
+                  !formData.email ||
+                  !formData.message ||
+                  !captchaToken
+                }
                 className="w-full flex items-center justify-center gap-2 py-3 h-12 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {sent ? (
-                  <>
-                    Message Sent ✓
-                  </>
+                  <>Message Sent ✓</>
+                ) : isSending ? (
+                  <>Sending...</>
                 ) : (
                   <>
                     Send Message
